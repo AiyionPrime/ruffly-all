@@ -31,3 +31,38 @@ impl FromStr for RuffCode {
         Ok(RuffCode { group, number })
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn i001() {
+        let str_code = "I001";
+        let code = RuffCode::from_str(&str_code).unwrap();
+        assert_eq!(code.group, "I");
+        assert_eq!(code.number, 1);
+        assert_eq!(code.to_string(), "I001");
+    }
+
+    #[test]
+    fn perf403() {
+        let str_code = "PERF403";
+        let code = RuffCode::from_str(&str_code).unwrap();
+        assert_eq!(code.group, "PERF");
+        assert_eq!(code.number, 403);
+        assert_eq!(code.to_string(), "PERF403");
+    }
+
+    #[test]
+    #[should_panic = "ParseRuffCodeError"]
+    fn invalid() {
+        RuffCode::from_str("invalid").unwrap();
+    }
+
+    #[test]
+    #[should_panic = "ParseRuffCodeError"]
+    fn invalid_numeric() {
+        RuffCode::from_str("42").unwrap();
+    }
+}
