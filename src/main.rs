@@ -30,6 +30,7 @@ fn main() {
             .is_ascii_alphabetic()
             && *maybe_code != "invalid-syntax:"
             && *maybe_code != "checks"
+            && *maybe_code != "fixes"
         {
             let error_message = format!("Could not parse ruff code: '{}'", &maybe_code);
             let code = RuffCode::from_str(maybe_code).expect(&error_message);
