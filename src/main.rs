@@ -31,7 +31,8 @@ fn main() {
             && *maybe_code != "invalid-syntax:"
             && *maybe_code != "checks"
         {
-            let code = RuffCode::from_str(maybe_code).expect("could not parse");
+            let error_message = format!("Could not parse ruff code: '{}'", &maybe_code);
+            let code = RuffCode::from_str(maybe_code).expect(&error_message);
             unique_groups.insert(code.group);
         }
     }
