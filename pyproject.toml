@@ -5,7 +5,7 @@ build-backend = "maturin"
 [project]
 name = "ruffly-all"
 version = "0.2.0"
-description = "A small tool generating a migration path to ruff from anywhere."
+description = "Generate a migration path to ruff from anywhere."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

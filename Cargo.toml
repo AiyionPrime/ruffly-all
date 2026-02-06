@@ -5,7 +5,7 @@ edition = "2024"
 repository = "https://github.com/AiyionPrime/ruffly-all"
 license = "MIT"
 authors = ["Burfeind, Jan-Niklas <jan-niklas.burfeind@sennheiser.com>"]
-description = "Generating a migration path to ruff from anywhere"
+description = "Generate a migration path to ruff from anywhere."
 
 [dependencies]
 regex = "1.12.3"
