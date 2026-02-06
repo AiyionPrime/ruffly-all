@@ -7,7 +7,7 @@ name = "ruffly-all"
 version = "0.2.0"
 description = "Generate a migration path to ruff from anywhere."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
     "ruff>=0.15.0",
 ]
