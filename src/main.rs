@@ -40,7 +40,7 @@ fn main() {
     listed.sort();
 
     println!("[tool.ruff]");
-    println!("lint.select = [ ALL ]");
+    println!("lint.select = [ \"ALL\" ]");
     println!("lint.ignore = [");
     println!("  \"D203\",    # incompatible to D211");
     println!("  \"D212\",    # incompatible to D213");
