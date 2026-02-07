@@ -1,42 +1,10 @@
 mod ruff_code;
+mod ruff_reader;
 
-use ruff_code::RuffCode;
-use std::collections::HashSet;
-use std::process::Command;
-use std::str::FromStr;
+use ruff_reader::read_codes;
 
 fn main() {
-    let output = Command::new("ruff")
-        .arg("check")
-        .arg("--select")
-        .arg("ALL")
-        .arg("--output-format")
-        .arg("concise")
-        .output()
-        .expect("failed to execute process");
-    let out = String::from_utf8_lossy(&output.stdout);
-
-    let mut unique_groups = HashSet::new();
-
-    for line in out.lines() {
-        let maybe_code = &line
-            .split_whitespace()
-            .nth(1)
-            .expect("line without second word encountered");
-        if maybe_code
-            .chars()
-            .next()
-            .expect("no char")
-            .is_ascii_alphabetic()
-            && *maybe_code != "invalid-syntax:"
-            && *maybe_code != "checks"
-            && *maybe_code != "fixes"
-        {
-            let error_message = format!("Could not parse ruff code: '{}'", &maybe_code);
-            let code = RuffCode::from_str(maybe_code).expect(&error_message);
-            unique_groups.insert(code.group);
-        }
-    }
+    let unique_groups = read_codes();
 
     let mut listed: Vec<String> = unique_groups.into_iter().collect();
     listed.sort();
