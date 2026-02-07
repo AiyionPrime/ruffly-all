@@ -1,22 +1,15 @@
 # that's ruffly-all.
 
-Answering what's necessary to migrate your project to ruff right now.
+Answering *what's necessary to migrate to ruff right now*.
 
 ### Motivation
 
-Deciding to use `ruff` in a project is easy.
+Starting with  `ruff` is simple. But enabling `"ALL"` rules in an
+existing application? That’s a challenge.
 
-Enabling `"ALL"` rules in an existing (brownfield) application not so
-much.
-
-
-
-This project allows to find the least amount of rulesets to
-(temporarily) disable, in order not to flood your CI with red lights.
-
-Over the course of the next days or weeks project maintaners can then
-tweak their codebase in their own pace, while `ruff` is already
-running.
+This project helps identify the minimal set of rules to disable
+temporarily, ensuring the CI remains green while allowing maintainers
+to iteratively fix their codebase at their own pace.
 
 ### Installation
 
