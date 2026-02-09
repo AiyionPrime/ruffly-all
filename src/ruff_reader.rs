@@ -1,3 +1,4 @@
+use crate::linter::Linter;
 use crate::ruff_code::RuffCode;
 use serde::Deserialize;
 use std::collections::HashSet;
@@ -9,7 +10,7 @@ pub struct RuffSparseJson {
     code: String,
 }
 
-pub fn read_codes() -> HashSet<String> {
+pub fn read_codes() -> HashSet<Linter> {
     let output = Command::new("ruff")
         .arg("check")
         .arg("--select")
@@ -28,7 +29,7 @@ pub fn read_codes() -> HashSet<String> {
     for item in items {
         let error_message = format!("Could not parse ruff code: '{}'", &item.code);
         let code = RuffCode::from_str(&item.code).expect(&error_message);
-        unique_groups.insert(code.group);
+        unique_groups.insert(code.linter);
     }
 
     unique_groups
