@@ -3,7 +3,7 @@ use std::str::FromStr;
 use strum::IntoEnumIterator;
 use strum_macros::EnumIter;
 
-#[derive(Debug, EnumIter)]
+#[derive(Debug, EnumIter, Eq, Hash, Ord, PartialEq, PartialOrd)]
 pub enum Linter {
     AIR,
     ERA,
