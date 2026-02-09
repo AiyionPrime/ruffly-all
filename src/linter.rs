@@ -1,6 +1,9 @@
 use std::fmt;
+use std::str::FromStr;
+use strum::IntoEnumIterator;
+use strum_macros::EnumIter;
 
-#[derive(Debug)]
+#[derive(Debug, EnumIter)]
 pub enum Linter {
     AIR,
     ERA,
@@ -70,6 +73,26 @@ pub enum Linter {
 impl fmt::Display for Linter {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{:?}", self)
+    }
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub struct ParseLinterError;
+
+impl FromStr for Linter {
+    type Err = ParseLinterError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let mut linter_vector: Vec<Linter> = Linter::iter().collect();
+        linter_vector.sort_by_key(|item| std::cmp::Reverse(format!("{:?}", item).len()));
+
+        for linter in linter_vector {
+            let name = format!("{:?}", linter);
+            if s.starts_with(&name) {
+                return Ok(linter);
+            }
+        }
+        Err(ParseLinterError)
     }
 }
 
@@ -149,5 +172,50 @@ impl Linter {
             self
         )
         .to_lowercase()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn t100() {
+        let str_code = "T100";
+        let code = Linter::from_str(&str_code).unwrap();
+        assert_eq!(code.to_string(), "T10");
+    }
+
+    #[test]
+    fn t203() {
+        let str_code = "T203";
+        let code = Linter::from_str(&str_code).unwrap();
+        assert_eq!(code.to_string(), "T20");
+    }
+
+    #[test]
+    fn q100() {
+        let str_code = "Q100";
+        let code = Linter::from_str(&str_code).unwrap();
+        assert_eq!(code.to_string(), "Q");
+    }
+
+    #[test]
+    fn plw0108() {
+        let str_code = "PLW0108";
+        let code = Linter::from_str(&str_code).unwrap();
+        assert_eq!(code.to_string(), "PLW");
+    }
+
+    #[test]
+    #[should_panic = "ParseLinterError"]
+    fn invalid() {
+        Linter::from_str("invalid").unwrap();
+    }
+
+    #[test]
+    #[should_panic = "ParseLinterError"]
+    fn invalid_numeric() {
+        Linter::from_str("42").unwrap();
     }
 }
