@@ -17,7 +17,8 @@ fn main() {
     println!("  \"D203\",    # incompatible to D211");
     println!("  \"D212\",    # incompatible to D213");
     for linter in listed {
-        println!("  \"{}\",", &linter);
+        let rule_toml = format!("\"{}\",", &linter);
+        println!("  {:11}# {}", rule_toml, linter.generate_rule_url());
     }
     println!("]");
 }
