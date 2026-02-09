@@ -1,3 +1,4 @@
+mod linter;
 mod ruff_code;
 mod ruff_reader;
 
