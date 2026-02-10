@@ -56,7 +56,7 @@ mod tests {
     fn perf403() {
         let str_code = "PERF403";
         let code = RuffCode::from_str(&str_code).unwrap();
-        assert_eq!(code.linter, Linter::PERF);
+        assert_eq!(code.linter, Linter::Perf);
         assert_eq!(code.to_string(), "PERF403");
     }
 
