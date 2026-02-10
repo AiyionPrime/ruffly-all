@@ -21,8 +21,11 @@ pub fn read_codes() -> HashSet<Linter> {
         .expect("failed to execute process");
     let out = String::from_utf8_lossy(&output.stdout);
 
-    let items: Vec<RuffSparseJson> =
-        serde_json::from_str(&out).expect("Could not read json from ruff.");
+    let items: Vec<RuffSparseJson> = serde_json::from_str::<Vec<RuffSparseJson>>(&out)
+        .expect("Could not read json from ruff.")
+        .into_iter()
+        .filter(|item| item.code != "invalid-syntax")
+        .collect();
 
     let mut unique_groups = HashSet::new();
 
