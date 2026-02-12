@@ -1,4 +1,12 @@
-# that's ruffly-all.
+# that's
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="img/ruffly-all-logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="img/ruffly-all-logo-light.png">
+    <img src="img/ruffly-all-logo-light.png" alt="ruffly-all">
+  </picture>
+</p>
 
 Answering *what's necessary to migrate to ruff right now*.
 
