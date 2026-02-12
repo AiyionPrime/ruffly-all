@@ -6,7 +6,7 @@ use std::process::Command;
 use std::str::FromStr;
 
 #[derive(Debug, Deserialize)]
-pub struct RuffSparseJson {
+struct RuffSparseJson {
     code: String,
 }
 
