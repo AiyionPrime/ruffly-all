@@ -183,28 +183,28 @@ mod tests {
     #[test]
     fn t100() {
         let str_code = "T100";
-        let code = Linter::from_str(&str_code).unwrap();
+        let code = Linter::from_str(str_code).unwrap();
         assert_eq!(code.to_string(), "T10");
     }
 
     #[test]
     fn t203() {
         let str_code = "T203";
-        let code = Linter::from_str(&str_code).unwrap();
+        let code = Linter::from_str(str_code).unwrap();
         assert_eq!(code.to_string(), "T20");
     }
 
     #[test]
     fn q100() {
         let str_code = "Q100";
-        let code = Linter::from_str(&str_code).unwrap();
+        let code = Linter::from_str(str_code).unwrap();
         assert_eq!(code.to_string(), "Q");
     }
 
     #[test]
     fn plw0108() {
         let str_code = "PLW0108";
-        let code = Linter::from_str(&str_code).unwrap();
+        let code = Linter::from_str(str_code).unwrap();
         assert_eq!(code.to_string(), "PLW");
     }
 

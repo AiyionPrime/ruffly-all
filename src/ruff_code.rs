@@ -39,7 +39,7 @@ mod tests {
     #[test]
     fn c404() {
         let str_code = "C404";
-        let code = RuffCode::from_str(&str_code).unwrap();
+        let code = RuffCode::from_str(str_code).unwrap();
         assert_eq!(code.linter, Linter::C4);
         assert_eq!(code.to_string(), "C404");
     }
@@ -47,7 +47,7 @@ mod tests {
     #[test]
     fn i001() {
         let str_code = "I001";
-        let code = RuffCode::from_str(&str_code).unwrap();
+        let code = RuffCode::from_str(str_code).unwrap();
         assert_eq!(code.linter, Linter::I);
         assert_eq!(code.to_string(), "I001");
     }
@@ -55,7 +55,7 @@ mod tests {
     #[test]
     fn perf403() {
         let str_code = "PERF403";
-        let code = RuffCode::from_str(&str_code).unwrap();
+        let code = RuffCode::from_str(str_code).unwrap();
         assert_eq!(code.linter, Linter::Perf);
         assert_eq!(code.to_string(), "PERF403");
     }
@@ -63,7 +63,7 @@ mod tests {
     #[test]
     fn t203() {
         let str_code = "T203";
-        let code = RuffCode::from_str(&str_code).unwrap();
+        let code = RuffCode::from_str(str_code).unwrap();
         assert_eq!(code.linter, Linter::T20);
         assert_eq!(code.to_string(), "T203");
     }
