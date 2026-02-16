@@ -117,6 +117,31 @@ That's ruffly-all to migrate to ruff right now.
 
 The latter prevents the project to worsen and can be resolved in small steps once there is time.
 
+### FAQ
+
+#### All those codes - where do they come from?
+
+`ruff` unifies a whole bunch of different static analysis tools (linters).
+To group them into their different original linters, the ecosystem came up
+with short abbreviations of them.
+
+Each one of them can be found on https://docs.astral.sh/ruff/rules.
+
+#### Why are there incompatible rules?
+
+No matter how clean the inspected python project is, one cannot ever enable
+`ALL` rules, due to conflicitng flavors of the very same rule.
+
+The most prominent examples are `D203` and `D211`, which enforce a blank line
+before a class docstring or its absence respectively.
+`ruff` warns about ignoring one of them and `ruffly-all` just transparently
+conveys that choice.
+
+You can swap them to your own liking though.
+
+Same goes for `D212` and `D213` which disagree on whether a docstrings
+content should start on the same line as itself, or the next.
+
 [^1]: While this does look like the `pylint` project had a lot going on,
 keep in mind extensive parts of the repo are faulty python snippets
 necessary as test resources for `pylint`s unittests.
