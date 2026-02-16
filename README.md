@@ -4,7 +4,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AiyionPrime/ruffly-all/main/img/ruffly-all-logo-dark.png">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/AiyionPrime/ruffly-all/main/img/ruffly-all-logo-light.png">
-    <img src="https://raw.githubusercontent.com/AiyionPrime/ruffly-all/main/img/ruffly-all-logo-light.png" alt="ruffly-all">
+    <img src="https://raw.githubusercontent.com/AiyionPrime/ruffly-all/main/img/ruffly-all-logo-default.png" alt="ruffly-all">
   </picture>
 </p>
 
