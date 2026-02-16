@@ -12,6 +12,10 @@ dependencies = [
     "ruff>=0.15.0",
 ]
 
+[project.urls]
+Repository = "https://github.com/AiyionPrime/ruffly-all.git"
+Issues = "https://github.com/AiyionPrime/ruffly-all/issues"
+
 
 [tool.maturin]
 bindings = "bin"
