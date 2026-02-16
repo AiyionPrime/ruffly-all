@@ -14,6 +14,7 @@ fn main() {
     println!("[tool.ruff]");
     println!("lint.select = [ \"ALL\" ]");
     println!("lint.ignore = [");
+    println!("  \"COM812\",  # incompatible with ruff format in 0.14");
     println!("  \"D203\",    # incompatible to D211");
     println!("  \"D212\",    # incompatible to D213");
     for linter in listed {
