@@ -10,7 +10,7 @@ struct RuffSparseJson {
     code: String,
 }
 
-pub fn read_codes() -> HashSet<Linter> {
+pub fn read_codes() -> (HashSet<Linter>, usize) {
     let output = Command::new("ruff")
         .arg("check")
         .arg("--select")
@@ -33,6 +33,8 @@ pub fn read_codes() -> HashSet<Linter> {
         .filter(|item| item.code != "invalid-syntax")
         .collect();
 
+    let ignored_amount: usize = items.len();
+
     let mut unique_groups = HashSet::new();
 
     for item in items {
@@ -41,5 +43,5 @@ pub fn read_codes() -> HashSet<Linter> {
         unique_groups.insert(code.linter);
     }
 
-    unique_groups
+    (unique_groups, ignored_amount)
 }

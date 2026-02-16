@@ -36,12 +36,16 @@ cargo install ruffly-all
 Find a project you'd like to use `ruff` in, we'll be using `pylint` as
 an example[^1].
 
+1. Run it
+
 ```bash
 cd pylint/
 ruffly-all
 ```
 
-```console
+2. Get a minimal ignore list for currently failing linters on `stdout`.
+
+```toml
 [tool.ruff]
 lint.select = [ "ALL" ]
 lint.ignore = [
@@ -101,6 +105,17 @@ lint.ignore = [
   "TRY",     # https://docs.astral.sh/ruff/rules/#tryceratops-try
 ]
 ```
+
+3. Get a summary on `stderr`
+
+```console
+This project has 11734 problems, which can be postponed by the above ruleset.
+That's ruffly-all to migrate to ruff right now.
+```
+
+4. Decide whether to fix the failures immediately or to add the above ignores for the moment.
+
+The latter prevents the project to worsen and can be resolved in small steps once there is time.
 
 [^1]: While this does look like the `pylint` project had a lot going on,
 keep in mind extensive parts of the repo are faulty python snippets
